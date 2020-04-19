@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dnswrl</title>
+</head>
+<body>
+
+<div id="container" align="center" style="height: 100%; width:100%; position: relative;">
+
+<div id="header" style="background-color:#FFA500;height: 50px">
+<h1 style="margin-bottom:0;">DNSWRL</h1></div>
+
+<div id="content" style="background-color:#EEEEEE;float:left;height: 100%; width: 100%">
+
+{% if possible_diseases_list %}
+    <div id="have_disease" align="left" style="padding:20px 0 20px 500px">
+
+<form action="{% url 'dnswrl:result' %}" method="post">
+    {% csrf_token %}
+    <h1 name="possible_diseases_list" id="have">可能得了：
+        {% for possible_diseases in possible_diseases_list %}
+        {{possible_diseases}} <br>
+        {% endfor %}
+    </h1>
+    <input type="hidden" name="possible_disease" id="possible_disease" value="{{possible_diseases_list}}">
+
+    <h3>其他症状</h3>
+    <ul>
+    {% for symptoms in symptoms_list %}
+        <li>{{ symptoms.symptoms_text }}</li>
+        {% for choice in symptoms.symptomslist_set.all %}
+        <input type="radio" name="choice{{ forloop.parentloop.counter }}" id="choice{{ forloop.parentloop.counter }}" value="{{symptoms.symptoms_text}}/{{ choice.symptomsList_text }}">
+        <label>{{ choice.symptomsList_text }}</label><br>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+
+    <h3>相关检查</h3>
+    <ul>
+    {% for examines in examines_list %}
+        <li>{{ examines.examine_text }}</li>
+        {% for examine in examines.examinelist_set.all %}
+        <input type="radio" name="examine{{ forloop.parentloop.counter }}" id="examine{{ forloop.parentloop.counter }}" value="{{examines.examine_text}}/{{ examine.examineList_text }}">
+        <label>{{ examine.examineList_text }}</label><br>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+
+    <input style="font-size:20px; background-color:#90EE90;" type="submit" value="提交">
+
+
+</form>
+    </div>
+
+{% else %}
+
+    <div id="not_have_disease" align="left" style="padding:20px 0 20px 500px">
+
+<form action="{% url 'dnswrl:inputText' %}" method="post">
+    {% csrf_token %}
+    <h2 name="possible_diseases_list" id="not have">你输入的信息：</h2>
+    <p>{{ inputText }}</p>
+    <h2>查询结果：</h2>
+    <p>暂时没有相关病症个案，敬请期待。</p>
+    <input style="font-size:20px; background-color:#90EE90;" type="submit" value="返回">
+</form>
+
+    </div>
+{% endif %}
+
+
+</div>
+
+<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;height: 100%">
+Lydia</div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+#JSGF V1.0 UTF-8 en;
+grammar example;
+
+public <greet> = [<PREFIX>]( <headache>{头痛} | <stomachache>{胃疼} )[<SUFFIX>];
+
+<headache> = (头疼|脑袋疼|头痛|头晕);
+
+<stomachache> = (胃疼|胃痛|肠胃不好|肠胃不舒服|胃不舒服|肚子不舒服);
+
+<open_or_close> = ( 打开{open} | 打开{open2} | 关闭{close} );
+
+<PREFIX> = (我[最近](感觉|觉得)[有[一]点])
+    | (我[最近][有[一]点]) ;
+
+<SUFFIX> = (啊|吧|嘛|吗|么|啦|呢);
+

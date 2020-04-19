@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+
+
+<div id="container" align="center" style="height: 100%; width:100%; position: relative;">
+
+<div id="header" style="background-color:#FFA500;height: 50px">
+<h1 style="margin-bottom:0;">DNSWRL</h1></div>
+
+<div id="content" style="background-color:#EEEEEE;float:left;height: 100%; width: 100%">
+
+    <div align="left" style="padding:20px 0 20px 500px">
+
+<h2>症状：{{characterization_text}} </h2>
+
+
+{% if symptomsList %}
+    <ul>
+    {% for symptoms in symptomsList %}
+        <li>{{ symptoms }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>{{post}}</p>
+    <p>无其他症状.</p>
+{% endif %}
+
+<h2>检查：{{department_text}} </h2>
+{% if examineList %}
+    <ul>
+    {% for examine in examineList %}
+        <li>{{ examine }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>{{post}}</p>
+    <p>没有进行其他检查.</p>
+{% endif %}
+
+<h2>您的检查结果：</h2>
+<p>{{ most_possible_disease }}</p>
+        <h2>治疗方案：</h2>
+<p>{{ treatment_text }}</p>
+
+        <form action="{% url 'dnswrl:inputText' %}" method="post">
+    {% csrf_token %}
+
+    <input style="font-size:20px; background-color:#90EE90;" type="submit" value="返回首页">
+</form>
+
+</div>
+
+</div>
+
+<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;height: 100%">
+Lydia</div>
+
+</div>
+
+</body>
+</html>
