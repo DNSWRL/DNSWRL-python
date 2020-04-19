@@ -1,5 +1,5 @@
 # DNSWRL-python
-DNSWRL的python实现版
+[D-NSWRL:一种语义Web动态扩展的非单调规则语言](http://journal2.cqupt.edu.cn/jcuptnse/jcuptnse/ch/reader/view_abstract.aspx?file_no=20200119&flag=1) 的原型系统python实现版
 
 ### 用到的库
 - django
