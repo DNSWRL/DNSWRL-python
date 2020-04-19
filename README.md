@@ -13,8 +13,23 @@ pip install -r requirements.txt
 2、运行Django
 ```bash
 python manage.py runserver
-```
 
+# Watching for file changes with StatReloader
+# Performing system checks...
+
+# System check identified no issues (0 silenced).
+# April 19, 2020 - 06:41:10
+# Django version 3.0.5, using settings 'DNSWRL.settings'
+# Starting development server at http://127.0.0.1:8000/
+# Quit the server with CONTROL-C.
+
+```
+3、浏览器访问
+```bash
+http://127.0.0.1:8000/input
+```
+其中http://127.0.0.1:8000/是上面的"server at"后面的地址，优于机器设置可能
+会不同
 ### 其他你可能想知道的操作
 - 创建数据库管理员
 ```bash
