@@ -6,7 +6,7 @@ def findTags(inputText):
     current_path = os.path.abspath(__file__)
     father_path = os.path.abspath(os.path.dirname(current_path) + os.path.sep + ".")
     examinePath = father_path+'/example.jsgf'
-    with open(examinePath, "r") as f:
+    with open(examinePath, "r", encoding='utf-8') as f:
         lines = f.readlines()
 
     content = "".join(lines)

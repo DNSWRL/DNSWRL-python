@@ -26,7 +26,7 @@ class ExamineAdmin(admin.ModelAdmin):
         'department_text',
     ]
     inlines = [ExamineListInline]
-    list_filter = ['examine_text']
+    list_filter = ['department_text']
     search_fields = ['examine_text']
     list_display = ('examine_text', 'department_text',)
 
