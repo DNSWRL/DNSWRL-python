@@ -1,24 +1,35 @@
-li a {
-    color: green;
-    paddings: 0 0 0 20px;
-}
-
-#container {
-    height: auto;
-    min-height: 100%
-    width:100%;
-    position: relative;
-}
 
 #header {
-    background: white url("images/bg_search_2019ncov.png") no-repeat;
+    background: white url("images/bg_search_2019ncov.png") no-repeat center;
     height: 200px;
-    width: 100%
+    width: 100%;
+    top:100px;
+}
+
+#content {
+    height: 100%;
+    width: 100%;
+    background: #EEEEEE;
 }
 
 #footer {
-     background: white url("images/bg_search_2019ncov.png") no-repeat;
-     text-align:center;
-     height: 200px;
+    position:relative;
+    margin: -20px 0 0 0;
+    background: white url("images/bg_foot_search_2019ncov.png") no-repeat center;
+    text-align:center;
+    width: 100%;
+    bottom: 0px;
+}
 
+#nconv {
+    padding:0  100px 0 100px
+}
+
+#news {
+    font-weight: bold;
+    color: #880000;
+}
+
+#lydia {
+    padding:20px 0 20px 0
 }

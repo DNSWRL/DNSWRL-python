@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Symptoms, Disease, Examine
 from dnswrl_app.jsgfParser import jsgfParser
+import requests
 
 
 def choice(request):
@@ -138,4 +139,18 @@ def result(request):
     return render(request, 'dnswrl/result.html', context)
 
 def inputText(request):
-    return render(request, 'dnswrl/input.html')
+    news_list = ''
+    try:
+        url = "https://lab.isaaclin.cn/nCoV/api/news"
+        r = requests.get(url)
+        rjson = r.json()
+        res = rjson['results']
+        for new in res:
+            news_list += '\t' + new['title'] + '；'
+    except:
+        news_list = '抱歉，暂时无法获取新闻资讯；'
+
+    context = {
+        'news_list': news_list
+    }
+    return render(request, 'dnswrl/input.html', context)

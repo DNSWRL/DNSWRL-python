@@ -15,34 +15,36 @@
 <div id="header">
 </div>
 
-<div id="content" style="background-color:#EEEEEE;float:left;height: 100%; width: 100%">
+    <!--<div id="nconv">-->
+        <!--<marquee id="news" style="padding: 0 100px 0 100px; text:#880000">{{ news_list }}</marquee>-->
+    <!--</div>-->
 
+<div id="content">
     <form action="{% url 'dnswrl:choice' %}" method="post" style="padding: 20px 0 20px">
         {% csrf_token %}
-
-        <textarea type="text" name="inputText" placeholder="输入你的症状..." style="background-color:#EEEDDD; height: 100px; width: 300px; font-size:20px; line-height:25px"></textarea>
-        <input type="submit" style="height:20px; width:50px; background-color:#FFA500;" value="确定">
+        <textarea type="text" name="inputText" placeholder="输入你的症状..." style="background-color:#EEEDDD; height: 300px; width: 800px; font-size:20px; line-height:25px"></textarea>
+        <br><input type="submit" style="height:40px; width:80px; background-color:#FFA500; font-size:20px" value="确定">
     </form>
 
 </div>
 
 <div id="footer">
-    <p>
-        相关链接：
-        <a href="http://www.lntu.edu.cn/">辽宁工程技术大学</a>
-        <a href="http://dxxy.lntu.edu.cn/">电子与信息工程学院</a>
-    </p>
-    <p>
-        <a href="http://www.ikcest.org/index.htm">国际工程科技知识中心</a>
-        <a href="http://www.ckcest.cn/" target="_blank">中国工程科技知识中心</a>
-        <a href="http://www.cae.cn/cae/html/main/index.html" target="_blank">中国工程院</a>
-    </p>
-    <p>
-        <a href="https://bigd.big.ac.cn/?lang=zh" target="_blank">国家基因组科学数据中心</a>
-        <a href="http://www.ncmi.cn/" target="_blank">国家人口与健康科学数据共享服务平台</a>
-        <a href="https://www.stemcell.xin/" target="_blank">国家干细胞转换资源库</a>
-    </p>
-    <p>Lydia</p>
+    <!--<p>-->
+        <!--相关链接：-->
+        <!--<a href="http://www.lntu.edu.cn/">辽宁工程技术大学</a>-->
+        <!--<a href="http://dxxy.lntu.edu.cn/">电子与信息工程学院</a>-->
+    <!--</p>-->
+    <!--<p>-->
+        <!--<a href="http://www.ikcest.org/index.htm">国际工程科技知识中心</a>-->
+        <!--<a href="http://www.ckcest.cn/" target="_blank">中国工程科技知识中心</a>-->
+        <!--<a href="http://www.cae.cn/cae/html/main/index.html" target="_blank">中国工程院</a>-->
+    <!--</p>-->
+    <!--<p>-->
+        <!--<a href="https://bigd.big.ac.cn/?lang=zh" target="_blank">国家基因组科学数据中心</a>-->
+        <!--<a href="http://www.ncmi.cn/" target="_blank">国家人口与健康科学数据共享服务平台</a>-->
+        <!--<a href="https://www.stemcell.xin/" target="_blank">国家干细胞转换资源库</a>-->
+    <!--</p>-->
+    <p id="lydia">Lydia</p>
 </div>
 
 </div>

@@ -13,7 +13,7 @@
 
 <div id="header"></div>
 
-<div id="content" style="background-color:#EEEEEE;float:left;height: 100%; width: 100%">
+<div id="content">
 
     <div align="left" style="padding:20px 0 20px 500px">
 
@@ -44,9 +44,9 @@
 {% endif %}
 
 <h2>您的检查结果：</h2>
-<p>{{ most_possible_disease }}</p>
+<p style="padding:0 40px">{{ most_possible_disease }}</p>
         <h2>治疗方案：</h2>
-<p>{{ treatment_text }}</p>
+<p style="padding:0 40px">{{ treatment_text }}</p>
 
         <form action="{% url 'dnswrl:inputText' %}" method="post">
     {% csrf_token %}
@@ -58,8 +58,24 @@
 
 </div>
 
-<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;height: 100%">
-Lydia</div>
+<div id="footer">
+    <!--<p>-->
+        <!--相关链接：-->
+        <!--<a href="http://www.lntu.edu.cn/">辽宁工程技术大学</a>-->
+        <!--<a href="http://dxxy.lntu.edu.cn/">电子与信息工程学院</a>-->
+    <!--</p>-->
+    <!--<p>-->
+        <!--<a href="http://www.ikcest.org/index.htm">国际工程科技知识中心</a>-->
+        <!--<a href="http://www.ckcest.cn/" target="_blank">中国工程科技知识中心</a>-->
+        <!--<a href="http://www.cae.cn/cae/html/main/index.html" target="_blank">中国工程院</a>-->
+    <!--</p>-->
+    <!--<p>-->
+        <!--<a href="https://bigd.big.ac.cn/?lang=zh" target="_blank">国家基因组科学数据中心</a>-->
+        <!--<a href="http://www.ncmi.cn/" target="_blank">国家人口与健康科学数据共享服务平台</a>-->
+        <!--<a href="https://www.stemcell.xin/" target="_blank">国家干细胞转换资源库</a>-->
+    <!--</p>-->
+    <p id="lydia">Lydia</p>
+</div>
 
 </div>
 
