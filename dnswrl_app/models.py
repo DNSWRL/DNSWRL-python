@@ -34,7 +34,7 @@ class Disease(models.Model):
     disease_text = models.CharField(max_length=500)
     symptoms_text = models.CharField(max_length=200, default='')
     examine_text = models.CharField(max_length=200, default='', blank=True)
-    manifestation_text = models.CharField(max_length=200, default='', blank=True)
+    manifestation_text = models.CharField(max_length=200, default='')
     treatment_text = models.CharField(max_length=500, default='')
 
     def __str__(self):

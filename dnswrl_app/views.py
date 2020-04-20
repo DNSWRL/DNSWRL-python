@@ -54,7 +54,9 @@ def choice(request):
 def result(request):
     # inputText = request.POST['choice1'].split('/')[0]
     symptomsList = []
+    symptoms_list = []
     examineList = []
+    examine_list = []
     post = request.POST
     postList = post.lists()
 
@@ -68,6 +70,7 @@ def result(request):
     for symptom in symptomsList:
         symptom_text = symptom[0].split('/')[0]
         symptom_res = symptom[0].split('/')[1]
+        symptoms_list.append(symptom_text+'\t\t'+symptom_res)
         if symptom_res == '是':
             for symptoms in symptomsList_all:
                 if symptom_text == symptoms.symptoms_text:
@@ -81,6 +84,7 @@ def result(request):
     for examine in examineList:
         examine_text = examine[0].split('/')[0]
         examine_res = examine[0].split('/')[1]
+        examine_list.append(examine_text+'\t\t'+examine_res)
         if examine_res != '正常' or symptom_res != '否':
             for examines in examineList_all:
                 if examine_text == examines.examine_text:
@@ -122,8 +126,8 @@ def result(request):
 
     context = {
         'inputText': inputText,
-        'symptomsList': symptomsList,
-        'examineList': examineList,
+        'symptomsList': symptoms_list,
+        'examineList': examine_list,
         'characterization_text': characterization_text,
         'department_text': department_text,
         'most_possible_disease': most_possible_disease,

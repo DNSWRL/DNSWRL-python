@@ -7,10 +7,11 @@ class SymptomsListInline(admin.TabularInline):
     extra = 1
 
 class SymptomsAdmin(admin.ModelAdmin):
-    fields = [
-        'symptoms_text',
-        'characterization_text',
+    fieldsets = [
+        ('症状名称', {'fields':['symptoms_text']}),
+        ('症状表现', {'fields':['characterization_text']}),
     ]
+
     inlines = [SymptomsListInline]
     list_filter = ['symptoms_text']
     search_fields = ['symptoms_text']
@@ -21,9 +22,9 @@ class ExamineListInline(admin.TabularInline):
     extra = 1
 
 class ExamineAdmin(admin.ModelAdmin):
-    fields = [
-        'examine_text',
-        'department_text',
+    fieldsets = [
+        ('检查项', {'fields': ['examine_text']}),
+        ('所属科室', {'fields': ['department_text']}),
     ]
     inlines = [ExamineListInline]
     list_filter = ['department_text']
@@ -32,9 +33,12 @@ class ExamineAdmin(admin.ModelAdmin):
 
 class DiseaseAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['disease_text', 'symptoms_text', 'examine_text', 'manifestation_text', 'treatment_text']})
-        # (None, {'fields': ['symptoms_key']})
-        # (None, {'fields': ['examine_key']})
+        ('疾病名称', {'fields': ['disease_text']}),
+        ('症状列表(用|分隔)', {'fields': ['symptoms_text']}),
+        ('检查科室列表(用|分隔)', {'fields': ['examine_text']}),
+        ('表征列表(用|分隔)', {'fields': ['manifestation_text']}),
+        ('治疗建议', {'fields': ['treatment_text']}),
+
     ]
     list_filter = ['disease_text']
     search_fields = ['disease_text']

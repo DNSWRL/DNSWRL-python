@@ -1,0 +1,24 @@
+li a {
+    color: green;
+    paddings: 0 0 0 20px;
+}
+
+#container {
+    height: auto;
+    min-height: 100%
+    width:100%;
+    position: relative;
+}
+
+#header {
+    background: white url("images/bg_search_2019ncov.png") no-repeat;
+    height: 200px;
+    width: 100%
+}
+
+#footer {
+     background: white url("images/bg_search_2019ncov.png") no-repeat;
+     text-align:center;
+     height: 200px;
+
+}
