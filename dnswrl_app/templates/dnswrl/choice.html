@@ -18,11 +18,16 @@
 
 <form action="{% url 'dnswrl:result' %}" method="post">
     {% csrf_token %}
-    <h1 name="possible_diseases_list" id="have">可能得了：
+    <h3 name="possible_diseases_list" id="inputText">你的输入：</h3>
+    <p style="padding:0 40px; font-size:20px">{{ inputText }}</p>
+
+    <h3 name="possible_diseases_list" id="have">可能得了：</h3>
+    <p style="padding:0 40px; font-size:20px">
         {% for possible_diseases in possible_diseases_list %}
         {{possible_diseases}} <br>
         {% endfor %}
-    </h1>
+    </p>
+
     <input type="hidden" name="possible_disease" id="possible_disease" value="{{possible_diseases_list}}">
 
     <h3>其他症状</h3>
@@ -47,7 +52,7 @@
     {% endfor %}
     </ul>
 
-    <input style="font-size:20px; background-color:#90EE90;" type="submit" value="提交">
+    <input style="height:40px; width:80px; background-color:#909497; color:white; font-size:20px"  type="submit" value="提交">
 
 
 </form>
@@ -59,11 +64,11 @@
 
 <form action="{% url 'dnswrl:inputText' %}" method="post">
     {% csrf_token %}
-    <h2 name="possible_diseases_list" id="not have">你输入的信息：</h2>
-    <p>{{ inputText }}</p>
-    <h2>查询结果：</h2>
-    <p>暂时没有相关病症个案，敬请期待。</p>
-    <input style="font-size:20px; background-color:#90EE90;" type="submit" value="返回">
+    <h3 name="possible_diseases_list" id="not have">你输入的信息：</h3>
+    <p style="padding:0 40px; font-size:20px">{{ inputText }}</p>
+    <h3>查询结果：</h3>
+    <p style="padding:0 40px; font-size:20px">暂时没有相关病症个案，敬请期待。</p>
+    <input style="height:40px; width:80px; background-color:#909497; color:white; font-size:20px"  type="submit" value="返回">
 </form>
 
     </div>
@@ -88,7 +93,9 @@
         <!--<a href="http://www.ncmi.cn/" target="_blank">国家人口与健康科学数据共享服务平台</a>-->
         <!--<a href="https://www.stemcell.xin/" target="_blank">国家干细胞转换资源库</a>-->
     <!--</p>-->
-    <p id="lydia">Lydia</p>
+    <p style="padding:20px 0 0 0;font-size:15px">动态环境下Web数据的表示与推理技术研究动态环境下Web数据的表示与推理技术研究</p>
+    <p style="font-size:10px">Research on Representation and Reasoning Technology of Web data in Dynamic Environment</p>
+    <p id="lydia" style="padding:0 0 20px 0">李佳   Lij_1016@163.com</p></div>
 </div>
 
 </div>

@@ -3,13 +3,13 @@
     background: white url("images/bg_search_2019ncov.png") no-repeat center;
     height: 200px;
     width: 100%;
-    top:100px;
+    top: 20px;
 }
 
 #content {
     height: 100%;
     width: 100%;
-    background: #EEEEEE;
+    background: #E6B0AA;
 }
 
 #footer {
@@ -31,5 +31,13 @@
 }
 
 #lydia {
-    padding:20px 0 20px 0
+    padding:0 0 20px 0
+}
+
+#confirm {
+    height:40px;
+    width:80px;
+    background-color:#909497;
+    color:white;
+    font-size:20px"
 }
