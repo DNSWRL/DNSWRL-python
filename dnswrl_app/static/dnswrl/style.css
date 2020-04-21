@@ -1,7 +1,7 @@
 
 #header {
     background: white url("images/bg_search_2019ncov.png") no-repeat center;
-    height: 200px;
+    height: 300px;
     width: 100%;
     top: 20px;
 }
@@ -9,13 +9,14 @@
 #content {
     height: 100%;
     width: 100%;
-    background: #E6B0AA;
+    background: #FFE4E1;
+
 }
 
 #footer {
     position:relative;
     margin: -20px 0 0 0;
-    background: white url("images/bg_foot_search_2019ncov.png") no-repeat center;
+    background: white url("images/bg_foot_search_2019ncov.png") center;
     text-align:center;
     width: 100%;
     bottom: 0px;
