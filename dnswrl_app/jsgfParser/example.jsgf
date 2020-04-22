@@ -1,7 +1,44 @@
 #JSGF V1.0 UTF-8 en;
 grammar example;
 
-public <greet> = [<PREFIX>]( <headache>{头痛} | <stomachache>{胃疼} )[<SUFFIX>];
+public <greet> = [<PREFIX>]( <headache>{头痛}
+    | <stomachache>{胃疼}
+    | <tinnitus>{耳鸣}
+    | <rhinorrhea>{流鼻涕}
+    | <dizzy>{头晕}
+    | <fever>{发热}
+    | <fatigue>{乏力}
+    | <cough>{咳嗽}
+    | <hypoxia>{缺氧}
+    | <nausea>{恶心}
+    | <anorexia>{食欲缺乏}
+    | <arthralgia>{关节疼痛}
+    | <acne>{下巴长痘}
+    | <otherwise>{其他} )[<SUFFIX>];
+
+<otherwise> = (拜拜);
+
+<acne> = (脸上长痘|下巴长痘);
+
+<arthralgia> = (关节疼痛);
+
+<anorexia> = (食欲缺乏);
+
+<nausea> = (恶心);
+
+<hypoxia> = (缺氧);
+
+<cough> = (咳嗽);
+
+<fatigue> = (乏力);
+
+<fever> = (发热);
+
+<dizzy> = (头晕);
+
+<rhinorrhea> = (流鼻涕);
+
+<tinnitus> = (耳鸣);
 
 <headache> = (头疼|脑袋疼|头痛|头晕);
 

@@ -1,13 +1,20 @@
 
+#container {
+    width:expression(document.body.clientWidth);
+    height: expression(document.body.clientHeight);
+    margin:0 auto;
+}
+
 #header {
     background: white url("images/bg_search_2019ncov.png") no-repeat center;
-    height: 300px;
+    background-size: 100% auto;
+    height: 100px;
     width: 100%;
     top: 20px;
 }
 
 #content {
-    height: 100%;
+    height: auto;
     width: 100%;
     background: #FFE4E1;
 
@@ -19,6 +26,7 @@
     background: white url("images/bg_foot_search_2019ncov.png") center;
     text-align:center;
     width: 100%;
+    height: auto;
     bottom: 0px;
 }
 

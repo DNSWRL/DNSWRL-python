@@ -7,29 +7,31 @@ import requests
 def choice(request):
     inputText = request.POST['inputText']
     matching, tags = jsgfParser.findTags(inputText)
+
     disease_list = Disease.objects.all()
     possible_diseases_list = []
     possible_other_symptoms = ''
     need_to_check = ''
+
     if len(tags) > 0:
         for disease in disease_list:
             if tags[0] in disease.manifestation_text.split('|'):
                 possible_diseases_list.append(disease.disease_text)
                 if possible_other_symptoms is not '':
-                    possible_other_symptoms += '|'+disease.symptoms_text
+                    possible_other_symptoms += '|'+disease.symptoms_log
                 else:
-                    possible_other_symptoms += disease.symptoms_text
+                    possible_other_symptoms += disease.symptoms_log
                 if need_to_check is not '':
-                    need_to_check += '|'+disease.examine_text
+                    need_to_check += '|'+disease.examine_log
                 else:
-                    need_to_check += disease.examine_text
+                    need_to_check += disease.examine_log
 
     possible_other_symptoms_list = possible_other_symptoms.split('|')
     symptoms_list_all = Symptoms.objects.all()
     symptoms_list = []
     for other_symptoms in possible_other_symptoms_list:
         for symptoms in symptoms_list_all:
-            if other_symptoms == symptoms.characterization_text:
+            if other_symptoms == symptoms.symptoms_log:
                 if symptoms not in symptoms_list:
                     symptoms_list.append(symptoms)
 
@@ -39,7 +41,7 @@ def choice(request):
     examines_list = []
     for to_check in need_to_check_list:
         for examines in examines_list_all:
-            if to_check == examines.department_text:
+            if to_check == examines.examine_log:
                 if examines not in examines_list:
                     examines_list.append(examines)
 
@@ -70,41 +72,49 @@ def result(request):
     symptomsList_all = Symptoms.objects.all()
     for symptom in symptomsList:
         symptom_text = symptom[0].split('/')[0]
-        symptom_res = symptom[0].split('/')[1]
-        symptoms_list.append(symptom_text+'\t\t'+symptom_res)
-        if symptom_res == '是':
+        symptoms_res = symptom[0].split('/')[1]
+        symptoms_res_log = symptom[0].split('/')[2]
+        symptoms_list.append(symptom_text+'\t\t'+symptoms_res)
+        if symptoms_res_log == '1':
+            print(symptom_text)
             for symptoms in symptomsList_all:
                 if symptom_text == symptoms.symptoms_text:
                     if characterization_text != '':
-                        characterization_text += '|' + symptoms.characterization_text
+                        characterization_text += '|' + symptoms.symptoms_log
                     else:
-                        characterization_text += symptoms.characterization_text
+                        characterization_text += symptoms.symptoms_log
 
-    department_text = ''
+    examine_logs = ''
     examineList_all = Examine.objects.all()
     for examine in examineList:
         examine_text = examine[0].split('/')[0]
         examine_res = examine[0].split('/')[1]
+        examine_log = examine[0].split('/')[2]
         examine_list.append(examine_text+'\t\t'+examine_res)
-        if examine_res != '正常' or symptom_res != '否':
+        if examine_log == '1':
+            print(examine_text)
             for examines in examineList_all:
                 if examine_text == examines.examine_text:
-                    if department_text != '':
-                        department_text += '|' + examines.department_text
+                    if examine_logs != '':
+                        examine_logs += '|' + examines.examine_log
                     else:
-                        department_text += examines.department_text
+                        examine_logs += examines.examine_log
 
+    possible_disease_list = post['possible_disease']
     diseaseList_all = Disease.objects.all()
     disease_posible_set = {}
     for disease in diseaseList_all:
-        it = 0
-        for every_characterization_text in characterization_text.split('|'):
-            if every_characterization_text == disease.symptoms_text:
-                it += 1
-        for every_department_text in department_text.split('|'):
-            if every_department_text == disease.examine_text:
-                it += 1
-        disease_posible_set[disease.disease_text] = it
+        if disease.disease_text not in possible_disease_list: continue
+        else:
+            it = 0
+            for every_characterization_text in characterization_text.split('|'):
+                if every_characterization_text in disease.symptoms_log.split('|'):
+                    it += 1
+            for every_examine_logs in examine_logs.split('|'):
+                if every_examine_logs in disease.examine_log.split('|'):
+                    it += 1
+            disease_posible_set[disease.disease_text] = it
+
 
     if len(disease_posible_set) != 0:
         disease_possible_list = sorted(disease_posible_set.items(), key=lambda disease_posible_set: disease_posible_set[1])
@@ -118,9 +128,6 @@ def result(request):
         if most_possible_disease == disease.disease_text:
             treatment_text = disease.treatment_text
 
-
-    inputText = post['possible_disease']
-
     # for i in range(1, len(post)):
     #     symptom = request.POST['choice'+str(i)].split('/')[1] + request.POST['choice'+str(i)].split('/')[2]
     #     symptomsList.append(symptom)
@@ -130,7 +137,7 @@ def result(request):
         'symptomsList': symptoms_list,
         'examineList': examine_list,
         'characterization_text': characterization_text,
-        'department_text': department_text,
+        'examine_logs': examine_logs,
         'most_possible_disease': most_possible_disease,
         'treatment_text': treatment_text,
         'post': post,
