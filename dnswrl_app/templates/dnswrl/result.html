@@ -44,7 +44,7 @@
 <h3>您的检查结果：</h3>
 <p style="padding:0 40px">{{ most_possible_disease }}</p>
         <h3>治疗方案：</h3>
-<p style="padding:0 40px">{{ treatment_text }}</p>
+<p style="padding:0 500px 0 40px">{{ treatment_text }}</p>
 
         <form action="{% url 'dnswrl:inputText' %}" method="post">
     {% csrf_token %}

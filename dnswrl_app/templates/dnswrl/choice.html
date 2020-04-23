@@ -32,12 +32,11 @@
     <input type="hidden" name="possible_disease" id="possible_disease" value="{{possible_diseases_list}}">
 
     <h3>其他症状</h3>
-    <ul>
     {% for symptoms in symptoms_list %}
         <li>{{ symptoms.symptoms_text }}</li>
         {% for choice in symptoms.symptomslist_set.all %}
         <input type="radio" name="choice{{ forloop.parentloop.counter }}" id="choice{{ forloop.parentloop.counter }}" value="{{symptoms.symptoms_text}}/{{ choice.symptomsList_text }}/{{ choice.symptomsList_log }}">
-        <label>{{ choice.symptomsList_text }}</label><br>
+        <label>{{ choice.symptomsList_text }}</label>
         {% endfor %}
     {% endfor %}
     </ul>
@@ -48,7 +47,7 @@
         <li>{{ examines.examine_text }}</li>
         {% for examine in examines.examinelist_set.all %}
         <input type="radio" name="examine{{ forloop.parentloop.counter }}" id="examine{{ forloop.parentloop.counter }}" value="{{examines.examine_text}}/{{ examine.examineList_text }}/{{ examine.examineList_log }}">
-        <label>{{ examine.examineList_text }}</label><br>
+        <label>{{ examine.examineList_text }}</label>
         {% endfor %}
     {% endfor %}
     </ul>
